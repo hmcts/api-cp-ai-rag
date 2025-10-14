@@ -17,7 +17,7 @@ components:
       type: string
       pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
     metadataFilter:
-      description: 'A ke value pair object representing a filter value to be applied to the metadata of the ingested documents'
+      description: 'A key value pair object representing a filter value to be applied to the metadata of the ingested documents'
       type: object
       properties:
         key:
@@ -129,8 +129,7 @@ paths:
                 metadataFilters:
                   type: array
                   items:
-                    items:
-                      $ref: '#/components/schemas/metadataFilter'
+                    $ref: '#/components/schemas/metadataFilter'
               required:
                 - userQuery
                 - queryPrompt
