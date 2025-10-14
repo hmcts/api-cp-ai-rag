@@ -21,8 +21,8 @@ class OpenAPIConfigurationLoaderTest {
 
         Info info = openAPI.getInfo();
         assertNotNull(info);
-        assertEquals("Common Platform API", info.getTitle());
-        assertEquals("API description", info.getDescription());
+        assertEquals("RAG Service API", info.getTitle());
+        assertEquals("API for RAG service for document ingestion and answer retrieval", info.getDescription());
 
         String apiGitHubRepository = "api-cp-ai-rag";
         String expectedVersion = System.getProperty("API_SPEC_VERSION", "0.0.0");
