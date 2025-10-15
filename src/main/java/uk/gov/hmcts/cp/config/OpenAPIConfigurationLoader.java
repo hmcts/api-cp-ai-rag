@@ -16,7 +16,7 @@ import org.apache.commons.lang3.StringUtils;
 public class OpenAPIConfigurationLoader {
 
     private static final Logger LOG = LoggerFactory.getLogger(OpenAPIConfigurationLoader.class);
-    private static final String JUDGES_OPENAPI = "openapi/TODO_ADD_FILENAME.openapi.yml";
+    private static final String JUDGES_OPENAPI = "openapi/ai-rag-service.openapi.yml";
 
     public static OpenAPI loadOpenApiFromClasspath(final String path) {
         if (StringUtils.isBlank(path)) {
