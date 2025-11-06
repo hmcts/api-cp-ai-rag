@@ -134,7 +134,7 @@ paths:
                   type: string
                 queryPrompt:
                   type: string
-                metadataFilters:
+                metadataFilter:
                   type: array
                   items:
                     $ref: '#/components/schemas/metadataFilter'
