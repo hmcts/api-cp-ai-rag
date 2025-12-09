@@ -114,8 +114,9 @@ components:
       type: object
       properties:
         transactionId:
-          $ref: '#/components/schemas/uuid'
-          type: string
+          allOf:
+            - $ref: '#/components/schemas/uuid'
+            - description: Reference to lookup the status of the asynchronous request
         userQuery:
           type: string
           description: Query sent by the user
@@ -149,9 +150,9 @@ components:
       type: object
       properties:
         transactionId:
-          $ref: '#/components/schemas/uuid'
-          type: string
-          description: Reference to lookup the status of the asynchronous request
+          allOf:
+            - $ref: '#/components/schemas/uuid'
+            - description: Reference to lookup the status of the asynchronous request
       required:
         - transactionId
 
