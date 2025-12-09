@@ -300,8 +300,9 @@ paths:
           in: query
           required: true
           schema:
-            $ref: '#/components/schemas/uuid'
-            type: string
+            allOf:
+              - $ref: '#/components/schemas/uuid'
+              -  description: Reference to lookup the status of the asynchronous request
           description: Name of the document to retrieve status for
 
       responses:
