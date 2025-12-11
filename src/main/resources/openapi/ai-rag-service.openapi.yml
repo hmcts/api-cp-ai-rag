@@ -30,6 +30,21 @@ components:
       required:
         - key
         - value
+    documentIngestionStatus:
+      description: Status of document ingestion
+      type: string
+      enum:
+        - INGESTION_SUCCESS
+        - INGESTION_FAILED
+        - METADATA_VALIDATED
+        - INVALID_METADATA
+    answerGenerationStatus:
+      description: Status of answer ingestion
+      type: string
+      enum:
+        - ANSWER_GENERATED
+        - ANSWER_GENERATION_FAILED
+        - ANSWER_GENERATION_PENDING
 
     documentIngestionStatusReturnedSuccessfully:
       description: 'Payload representing the response for successful document ingestion status retrieval'
@@ -42,13 +57,7 @@ components:
         documentId:
           $ref: '#/components/schemas/uuid'
         status:
-          type: string
-          description: Status of the document ingestion
-          enum:
-            - INGESTION_SUCCESS
-            - INGESTION_FAILED
-            - METADATA_VALIDATED
-            - INVALID_METADATA
+          $ref: '#/components/schemas/documentIngestionStatus'
         lastUpdated:
           type: string
           format: date-time
@@ -117,6 +126,11 @@ components:
           allOf:
             - $ref: '#/components/schemas/uuid'
             - description: Reference to lookup the status of the asynchronous request
+        status:
+          $ref: '#/components/schemas/answerGenerationStatus'
+        reason:
+          type: string
+          description: Reason for the current status, if applicable
         userQuery:
           type: string
           description: Query sent by the user
@@ -144,6 +158,8 @@ components:
         - queryPrompt
         - chunkedEntries
         - transactionId
+        - status
+        - reason
 
     userQueryAnswerRequestAccepted:
       description: 'Payload representing the response for acceptance of answer generation to user query'
