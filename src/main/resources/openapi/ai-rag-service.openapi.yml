@@ -316,10 +316,14 @@ paths:
           in: path
           required: true
           schema:
-            allOf:
-              - $ref: '#/components/schemas/uuid'
-              -  description: Reference to lookup the status of the asynchronous request
-          description: Name of the document to retrieve status for
+            $ref: '#/components/schemas/uuid'
+          description: Reference to lookup the status of the asynchronous request
+        - name: withChunkedEntries
+          in: query
+          required: false
+          schema:
+            type: boolean
+          description: Optional parameter to indicate that chunked entries used to generate the answer should be included in the response
 
       responses:
         '200':
