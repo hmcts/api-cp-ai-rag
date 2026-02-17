@@ -99,7 +99,7 @@ components:
         documentReference:
           allOf:
             - $ref: '#/components/schemas/uuid'
-              description: Reference to file to be uploaded, to be used for subsequent status retrieval
+            - description: Reference to file to be uploaded, to be used for subsequent status retrieval
       required:
         - storageUrl
         - documentReference
