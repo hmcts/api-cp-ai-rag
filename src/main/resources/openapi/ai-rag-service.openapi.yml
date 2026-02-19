@@ -16,6 +16,7 @@ components:
     uuid:
       type: string
       pattern: ^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$
+
     metadataFilter:
       description: 'A key value pair object representing a filter value to be applied to the metadata of the ingested documents'
       type: object
@@ -31,6 +32,30 @@ components:
       required:
         - key
         - value
+
+    chunkedEntry:
+      description: 'A chunked entry object representing the chunked content used to generate the answer for user query'
+      type: object
+      properties:
+        documentId:
+          $ref: '#/components/schemas/uuid'
+        documentName:
+          type: string
+          description: Name of the document
+          maxLength: 50
+        pageNumber:
+          type: integer
+          description: Page number in the document from which the chunk was derived, if applicable
+        customMetadata:
+          type: array
+          description: 'List of key value pair objects representing the custom metadata associated with the chunked entry'
+          items:
+            $ref: '#/components/schemas/metadataFilter'
+      required:
+        - documentId
+        - documentName
+        - pageNumber
+
     documentIngestionStatus:
       description: Status of document ingestion
       type: string
@@ -41,6 +66,7 @@ components:
         - INVALID_METADATA
         - AWAITING_UPLOAD
         - AWAITING_INGESTION
+
     answerGenerationStatus:
       description: Status of answer ingestion
       type: string
@@ -162,7 +188,7 @@ components:
           type: array
           description: List of chunked entries used to generate the answer
           items:
-            type: object
+            $ref: '#/components/schemas/chunkedEntry'
         responseGenerationTime:
           type: string
           format: date-time
@@ -202,7 +228,7 @@ components:
           type: array
           description: List of chunked entries used to generate the answer
           items:
-            type: object
+            $ref: '#/components/schemas/chunkedEntry'
         responseGenerationTime:
           type: string
           format: date-time
