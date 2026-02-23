@@ -33,8 +33,8 @@ components:
         - key
         - value
 
-    chunkedEntry:
-      description: 'A chunked entry object representing the chunked content used to generate the answer for user query'
+    chunk:
+      description: 'An object representing the chunked content used to generate the answer for user query'
       type: object
       properties:
         documentId:
@@ -184,11 +184,11 @@ components:
         queryPrompt:
           type: string
           description: Prompt used for querying the LLM
-        chunkedEntries:
+        chunks:
           type: array
           description: List of chunked entries used to generate the answer
           items:
-            $ref: '#/components/schemas/chunkedEntry'
+            $ref: '#/components/schemas/chunk'
         responseGenerationTime:
           type: string
           format: date-time
@@ -200,7 +200,7 @@ components:
         - userQuery
         - llmResponse
         - queryPrompt
-        - chunkedEntries
+        - chunks
 
     userQueryAnswerReturnedSuccessfullyAsynchronously:
       description: 'Payload representing the response for successful answer generation to user query'
@@ -224,11 +224,11 @@ components:
         queryPrompt:
           type: string
           description: Prompt used for querying the LLM
-        chunkedEntries:
+        chunks:
           type: array
           description: List of chunked entries used to generate the answer
           items:
-            $ref: '#/components/schemas/chunkedEntry'
+            $ref: '#/components/schemas/chunk'
         responseGenerationTime:
           type: string
           format: date-time
@@ -240,7 +240,7 @@ components:
         - userQuery
         - llmResponse
         - queryPrompt
-        - chunkedEntries
+        - chunks
         - transactionId
         - status
         - reason
