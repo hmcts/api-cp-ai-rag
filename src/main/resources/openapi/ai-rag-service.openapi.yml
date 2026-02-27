@@ -33,7 +33,7 @@ components:
         - key
         - value
 
-    chunk:
+    documentChunk:
       description: 'An object representing the chunked content used to generate the answer for user query'
       type: object
       properties:
@@ -46,6 +46,9 @@ components:
         pageNumber:
           type: integer
           description: Page number in the document from which the chunk was derived, if applicable
+        chunkContent:
+          type: string
+          description: Content of the chunk used for generating the answer
         customMetadata:
           type: array
           description: 'List of key value pair objects representing the custom metadata associated with the chunked entry'
@@ -55,6 +58,7 @@ components:
         - documentId
         - documentName
         - pageNumber
+        - chunkContent
 
     documentIngestionStatus:
       description: Status of document ingestion
@@ -184,11 +188,11 @@ components:
         queryPrompt:
           type: string
           description: Prompt used for querying the LLM
-        chunks:
+        documentChunks:
           type: array
           description: List of chunked entries used to generate the answer
           items:
-            $ref: '#/components/schemas/chunk'
+            $ref: '#/components/schemas/documentChunk'
         responseGenerationTime:
           type: string
           format: date-time
@@ -200,7 +204,7 @@ components:
         - userQuery
         - llmResponse
         - queryPrompt
-        - chunks
+        - documentChunks
 
     userQueryAnswerReturnedSuccessfullyAsynchronously:
       description: 'Payload representing the response for successful answer generation to user query'
@@ -224,11 +228,11 @@ components:
         queryPrompt:
           type: string
           description: Prompt used for querying the LLM
-        chunks:
+        documentChunks:
           type: array
           description: List of chunked entries used to generate the answer
           items:
-            $ref: '#/components/schemas/chunk'
+            $ref: '#/components/schemas/documentChunk'
         responseGenerationTime:
           type: string
           format: date-time
@@ -240,10 +244,8 @@ components:
         - userQuery
         - llmResponse
         - queryPrompt
-        - chunks
         - transactionId
         - status
-        - reason
 
     userQueryAnswerRequestAccepted:
       description: 'Payload representing the response for acceptance of answer generation to user query'
