@@ -91,6 +91,11 @@ components:
           type: string
           description: Friendly name of the document
           maxLength: 50
+        overwrites:
+          type: array
+          items:
+            $ref: '#/components/schemas/uuid'
+          description: List of documents to be soft-deleted and hence will not be available for use in response generation
         metadataFilter:
           type: array
           items:
