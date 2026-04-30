@@ -70,6 +70,7 @@ components:
         - INVALID_METADATA
         - AWAITING_UPLOAD
         - AWAITING_INGESTION
+        - FILE_SIZE_OVER_LIMIT
 
     answerGenerationStatus:
       description: Status of answer ingestion
