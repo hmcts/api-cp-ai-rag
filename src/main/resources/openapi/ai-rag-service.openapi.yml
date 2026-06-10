@@ -1,7 +1,11 @@
 openapi: 3.0.0
 servers:
-  - description: APIHub API Auto Mocking AI RAG service APIs
-    url: https://virtserver.swaggerhub.com/HMCTS-DTS/api-cp-ai-rag/0.0.0
+  - description: RAG Service API
+    url: https://api-cp-ai-rag.net/{version}
+    variables:
+      version:
+        default: 0.0.0
+        description: API version; matches the spec info.version
 info:
   title: RAG Service API
   version: 0.0.0
