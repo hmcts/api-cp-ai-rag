@@ -40,7 +40,7 @@ class OpenAPIConfigurationLoaderTest {
 
         assertNotNull(openAPI.getServers());
         assertFalse(openAPI.getServers().isEmpty());
-        assertEquals("https://virtserver.swaggerhub.com/HMCTS-DTS/" + apiGitHubRepository + "/" + expectedVersion,
+        assertEquals("https://api-cp-ai-rag.net/{version}",
                 openAPI.getServers().get(0).getUrl());
     }
 
