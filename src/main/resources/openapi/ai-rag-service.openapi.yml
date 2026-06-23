@@ -65,7 +65,11 @@ components:
         - chunkContent
 
     documentIngestionStatus:
-      description: Status of document ingestion
+      description: >-
+        Status of document ingestion.
+        Deprecated values (retained for backward compatibility with historical records,
+        no longer produced since the direct-blob-drop ingestion flow was decommissioned):
+        METADATA_VALIDATED, INVALID_METADATA.
       type: string
       enum:
         - INGESTION_SUCCESS
@@ -325,35 +329,6 @@ paths:
           required: true
           schema:
             $ref: '#/components/schemas/uuid'
-          description: Name of the document to retrieve status for
-      responses:
-        '200':
-          description: Document ingestion status retrieved successfully
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/documentIngestionStatusReturnedSuccessfully'
-        '404':
-          description: Document not found
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/documentStatusNotAvailable'
-
-  /document-status:
-    get:
-      summary: Get document status
-      description: Obtain status of document uploaded for ingestion into AI search service
-      operationId: document-status
-      tags:
-        - Document ingestion status
-      parameters:
-        - name: document-name
-          in: query
-          required: true
-          schema:
-            type: string
-            maxLength: 1024
           description: Name of the document to retrieve status for
       responses:
         '200':
