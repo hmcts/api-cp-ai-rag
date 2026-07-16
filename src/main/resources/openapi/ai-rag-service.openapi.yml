@@ -174,21 +174,6 @@ components:
         - lastUpdated
         - reason
 
-    documentStatusNotAvailable:
-      description: 'Payload representing the response when document not known to the service'
-      type: object
-      properties:
-        documentName:
-          type: string
-          description: Name of the document
-          maxLength: 1024
-        reason:
-          type: string
-          description: Reason for the current status, if applicable
-      required:
-        - documentName
-        - reason
-
     userQueryAnswerReturnedSuccessfullySynchronously:
       description: 'Payload representing the response for successful answer generation to user query'
       type: object
