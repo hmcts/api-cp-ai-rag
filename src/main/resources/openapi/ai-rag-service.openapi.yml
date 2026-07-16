@@ -337,12 +337,24 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/documentIngestionStatusReturnedSuccessfully'
+        '400':
+          description: Request invalid (documentReference is not a valid uuid)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/requestErrored'
         '404':
           description: Document not found
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/documentStatusNotAvailable'
+                $ref: '#/components/schemas/requestErrored'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/requestErrored'
 
   /answer-user-query:
     post:
@@ -440,6 +452,18 @@ paths:
                 $ref: '#/components/schemas/userQueryAnswerReturnedSuccessfullyAsynchronously'
         '400':
           description: Request invalid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/requestErrored'
+        '404':
+          description: No answer request found for the transactionId
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/requestErrored'
+        '500':
+          description: Internal server error
           content:
             application/json:
               schema:
