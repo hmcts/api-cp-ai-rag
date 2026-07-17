@@ -11,6 +11,13 @@ updates:
       all-dependencies:
         patterns:
           - "*"
+    ignore:
+      # cyclonedx-gradle-plugin 3.x redesigned its task DSL (includeConfigs,
+      # destination, outputName etc. removed) and moved the default SBOM output
+      # path. Migrating needs a deliberate change to the cyclonedxBom config in
+      # build.gradle plus the bom.json consumers (jar task, codeql.yml upload).
+      - dependency-name: "org.cyclonedx.bom"
+        update-types: ["version-update:semver-major"]
 
   - package-ecosystem: "github-actions"
     directory: "/" # location of your workflow files
