@@ -294,6 +294,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/requestErrored'
+        '401':
+          description: Missing or invalid client identity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/requestErrored'
         '500':
           description: Internal server error
           content:
@@ -324,6 +330,12 @@ paths:
                 $ref: '#/components/schemas/documentIngestionStatusReturnedSuccessfully'
         '400':
           description: Request invalid (documentReference is not a valid uuid)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/requestErrored'
+        '401':
+          description: Missing or invalid client identity
           content:
             application/json:
               schema:
@@ -367,6 +379,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/requestErrored'
+        '401':
+          description: Missing or invalid client identity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/requestErrored'
         '500':
           description: Internal server error
           content:
@@ -396,6 +414,12 @@ paths:
                 $ref: '#/components/schemas/userQueryAnswerRequestAccepted'
         '400':
           description: Payload request invalid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/requestErrored'
+        '401':
+          description: Missing or invalid client identity
           content:
             application/json:
               schema:
@@ -437,6 +461,12 @@ paths:
                 $ref: '#/components/schemas/userQueryAnswerReturnedSuccessfullyAsynchronously'
         '400':
           description: Request invalid
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/requestErrored'
+        '401':
+          description: Missing or invalid client identity
           content:
             application/json:
               schema:
